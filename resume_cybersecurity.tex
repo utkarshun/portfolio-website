@@ -1,0 +1,185 @@
+%-------------------------------------------------------------------------------
+% Utkarsh Kher — Cybersecurity Resume
+% Compile with: pdflatex resume_cybersecurity.tex  (or tectonic)
+%-------------------------------------------------------------------------------
+\documentclass[letterpaper,10pt]{article}
+
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.6in}
+\addtolength{\evensidemargin}{-0.6in}
+\addtolength{\textwidth}{1.2in}
+\addtolength{\topmargin}{-0.6in}
+\addtolength{\textheight}{1.2in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Section formatting: small caps with a rule underneath
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+%-------------------- Custom commands --------------------
+\newcommand{\resumeItem}[1]{
+  \item\small{#1 \vspace{-2pt}}
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeEntryHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small\textbf{#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={$\bullet$}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.25in, label={$\circ$}]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------------------------------------------
+\begin{document}
+
+%-------------------- HEADING --------------------
+\begin{center}
+    {\Huge \scshape Utkarsh Kher} \\ \vspace{2pt}
+    \small
+    \href{mailto:kherutkarsh54@gmail.com}{kherutkarsh54@gmail.com} $|$
+    +91-6205052231 $|$
+    \href{https://www.linkedin.com/in/utkarsh-kher-654a1a282/}{LinkedIn} $|$
+    \href{https://github.com/utkarshun}{GitHub} $|$
+    \href{https://leetcode.com/u/utkarshkher/}{LeetCode}
+\end{center}
+
+%-------------------- SUMMARY --------------------
+\section{Summary}
+\small{
+Cybersecurity student skilled in \textbf{penetration testing, network security, Linux hardening, and DevSecOps}. Experienced in \textbf{ethical hacking, vulnerability assessment, and automation} using Python, Bash, and security tools. Certified in EC-Council Linux Security and Advanced Ethical Hacking. Proficient with Wireshark, Nessus, Burp Suite, and Docker security.
+}
+
+%-------------------- EDUCATION --------------------
+\section{Education}
+\begin{itemize}[leftmargin=0.15in, label={}]
+  \resumeSubheading
+    {RNS Institute of Technology}{Bangalore, India}
+    {B.E. in Cybersecurity; CGPA: 8.73/10}{2022 -- 2026}
+\end{itemize}
+
+%-------------------- TECHNICAL SKILLS --------------------
+\section{Technical Skills}
+\begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Penetration Testing:} Nmap, Metasploit, Hydra, Nikto, Nessus, Burp Suite \\
+     \textbf{Security:} Network Security, OWASP, Linux Hardening, Vulnerability Assessment \\
+     \textbf{DevSecOps:} Docker, Kubernetes, Ansible, CI/CD Security, OpenShift \\
+     \textbf{Programming:} Python, Bash, Java, JavaScript, C, C++ \\
+     \textbf{OS:} Kali Linux, Parrot OS, RHEL \\
+     \textbf{Monitoring:} Wireshark, Snort, Log Analysis, Security Audits \\
+     \textbf{Tools \& Others:} Git, GitHub, JIRA, Jenkins, AWS (Basics)
+    }}
+\end{itemize}
+
+%-------------------- EXPERIENCE --------------------
+\section{Experience}
+\resumeSubHeadingListStart
+
+  \resumeEntryHeading
+      {DocuPro --- SDE Intern}{June 2026 -- Present}
+      \resumeItemListStart
+        \resumeItem{Developing features for a visa document-processing platform built on Next.js 15, TypeScript, Prisma, and PostgreSQL.}
+        \resumeItem{Implementing RBAC-protected dashboard workflows and NextAuth OTP authentication for secure access control.}
+        \resumeItem{Building the customer-facing document-advisor chatbot: conversational flows for visa document guidance, eligibility checks, and in-chat document uploads, integrated with WhatsApp messaging.}
+        \resumeItem{Applying Zod input validation and typed error handling to keep APIs secure, testable, and reliable.}
+      \resumeItemListEnd
+
+  \resumeEntryHeading
+      {Leadics --- SWE Intern}{March 2026 -- Present}
+      \resumeItemListStart
+        \resumeItem{Contributed to software features in a team environment using Git, code review, and testing practices.}
+        \resumeItem{Collaborated on backend and API work to improve reliability, maintainability, and product quality.}
+      \resumeItemListEnd
+
+  \resumeEntryHeading
+      {Placement Volunteer, RNSIT}{2024 -- Present}
+      \resumeItemListStart
+        \resumeItem{Conducted workshops on secure coding and cybersecurity interview preparation.}
+        \resumeItem{Mentored peers on penetration testing and security best practices.}
+        \resumeItem{Organized CTF competitions and knowledge-sharing sessions.}
+        \resumeItem{Assisted in setting up cybersecurity labs for students.}
+      \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%-------------------- PROJECTS --------------------
+\section{Projects}
+\resumeSubHeadingListStart
+
+  \resumeEntryHeading
+      {Penetration Testing on Automotive Systems -- GPS Spoofing --- Python, Kali Linux}{Dec 2024}
+      \resumeItemListStart
+        \resumeItem{Simulated GPS spoofing attacks on RC car navigation to demonstrate vulnerabilities.}
+        \resumeItem{Developed Python-based NMEA signal generator for controlled testing.}
+        \resumeItem{Executed penetration testing with Nmap, Metasploit, and Wireshark.}
+        \resumeItem{Proposed anomaly detection mechanisms for GPS signal validation.}
+        \resumeItem{Documented attack scenarios and mitigation strategies for future reference.}
+        \resumeItem{Presented findings to peers to enhance understanding of automotive security risks.}
+      \resumeItemListEnd
+
+  \resumeEntryHeading
+      {Secure Ticketing Platform with QR Validation --- Spring Boot, PostgreSQL}{Jan -- Feb 2025}
+      \resumeItemListStart
+        \resumeItem{Built a secure ticketing platform with QR-based authentication.}
+        \resumeItem{Implemented role-based authentication and encrypted sensitive user data.}
+        \resumeItem{Developed REST APIs for ticket issuance, validation, and monitoring.}
+        \resumeItem{Conducted penetration testing using OWASP methodology.}
+        \resumeItem{Performed load testing to ensure platform scalability and reliability.}
+        \resumeItem{Deployed platform in cloud environment for real-world testing.}
+      \resumeItemListEnd
+
+  \resumeEntryHeading
+      {Network Packet Analyzer --- Python (Scapy)}{Nov -- Dec 2024}
+      \resumeItemListStart
+        \resumeItem{Developed tool for real-time network traffic capture and analysis.}
+        \resumeItem{Implemented filtering, inspection, and automated reporting of suspicious packets.}
+        \resumeItem{Visualized traffic patterns to support penetration testing exercises.}
+        \resumeItem{Added alerting mechanism for unusual traffic patterns using Python scripts.}
+        \resumeItem{Optimized performance to handle high-volume network traffic efficiently.}
+      \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%-------------------- CERTIFICATIONS & ACHIEVEMENTS --------------------
+\section{Certifications \& Achievements}
+\begin{itemize}[leftmargin=0.25in]
+    \small
+    \item Ethical Hacking (Advanced), Linux Security (EC-Council), Docker \& Kubernetes.
+    \item Python -- 5 (HackerRank).
+    \item Solved 200+ DSA problems on LeetCode.
+    \item Certified in AWS Cloud Foundations (Basics).
+\end{itemize}
+
+\end{document}

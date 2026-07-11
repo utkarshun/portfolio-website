@@ -1,0 +1,184 @@
+%-------------------------------------------------------------------------------
+% Utkarsh Kher — Resume
+% Compile with: pdflatex resume.tex
+%-------------------------------------------------------------------------------
+\documentclass[letterpaper,10pt]{article}
+
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.6in}
+\addtolength{\evensidemargin}{-0.6in}
+\addtolength{\textwidth}{1.2in}
+\addtolength{\topmargin}{-0.6in}
+\addtolength{\textheight}{1.2in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Section formatting: small caps with a rule underneath
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+%-------------------- Custom commands --------------------
+\newcommand{\resumeItem}[1]{
+  \item\small{#1 \vspace{-2pt}}
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.25in]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------------------------------------------
+\begin{document}
+
+%-------------------- HEADING --------------------
+\begin{center}
+    {\Huge \scshape Utkarsh Kher} \\ \vspace{2pt}
+    \textbf{Full Stack Developer} \\ \vspace{1pt}
+    Bangalore, India \\ \vspace{1pt}
+    \small
+    \href{mailto:kherutkarsh54@gmail.com}{kherutkarsh54@gmail.com} $|$
+    +91-6205052231 $|$
+    \href{https://www.linkedin.com/in/utkarsh-kher-654a1a282/}{LinkedIn} $|$
+    \href{https://github.com/utkarshun}{GitHub} $|$
+    \href{https://leetcode.com/u/utkarshkher/}{LeetCode}
+\end{center}
+
+%-------------------- SUMMARY --------------------
+\section{Summary}
+\small{
+Full Stack Developer with strong experience in Java, Spring Boot, React, and backend API development. Proven ability to build scalable web applications, RESTful APIs, and database-driven systems. Solid foundation in Data Structures, Algorithms, object-oriented programming, and software engineering best practices.
+}
+
+%-------------------- TECHNICAL SKILLS --------------------
+\section{Technical Skills}
+\begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Programming Languages:} Java, Python, JavaScript \\
+     \textbf{Frontend:} React, HTML, CSS, JavaScript \\
+     \textbf{Backend:} Spring Boot, Node.js, Express.js, RESTful APIs \\
+     \textbf{Databases:} PostgreSQL, MySQL, MongoDB, SQL \\
+     \textbf{Tools and Technologies:} Git, GitHub, Docker, Kubernetes, CI/CD Pipelines \\
+     \textbf{Concepts:} Object-Oriented Programming, Data Structures, Algorithms, API Integration, Agile Development \\
+     \textbf{Operating Systems:} Linux (Ubuntu, Kali Linux, RHEL)
+    }}
+\end{itemize}
+
+%-------------------- PROJECTS --------------------
+\section{Projects}
+\resumeSubHeadingListStart
+
+  \resumeProjectHeading
+      {\textbf{TalentLens Platform --- AI Powered Secure Assessment System} (React, Spring Boot, PostgreSQL)}{2026}
+      \resumeItemListStart
+        \resumeItem{Built secure AI-powered online examination and assessment platform using React frontend and Spring Boot backend.}
+        \resumeItem{Implemented authentication, protected exam workflows, and automated evaluation features for reliable performance.}
+        \resumeItem{Integrated AI-based suspicious activity detection to maintain exam integrity and platform reliability.}
+        \resumeItem{\href{https://github.com/utkarshun/Talentlens-platform}{GitHub Repository}}
+      \resumeItemListEnd
+
+  \resumeProjectHeading
+      {\textbf{Asynchronous Table Profiling Microservice} (Node.js, Express, PostgreSQL, Redis, Docker)}{2026}
+      \resumeItemListStart
+        \resumeItem{Implemented an async profiling pipeline: REST APIs to submit jobs and retrieve structured JSON profiles, BullMQ workers on Redis so profiling runs off the request path, and PostgreSQL for request metadata and stored results.}
+        \resumeItem{Containerized API, worker, database, and cache with Docker Compose for repeatable local and demo deployments.}
+        \resumeItem{Added optional AI-enriched summaries on top of deterministic column statistics, plus an MCP (stdio) tool surface (\texttt{profile\_table}, \texttt{get\_profile}, \texttt{list\_profiles}) that mirrors the HTTP contract for agent-driven workflows.}
+        \resumeItem{\href{https://github.com/utkarshun/Ignite-data-profiling}{GitHub Repository}}
+      \resumeItemListEnd
+
+  \resumeProjectHeading
+      {\textbf{Event Ticket Platform with QR Code Verification} (React, Spring Boot, PostgreSQL)}{2025}
+      \resumeItemListStart
+        \resumeItem{Developed full stack web application using React frontend and Spring Boot backend RESTful APIs efficiently.}
+        \resumeItem{Implemented authentication, authorization, and secure API integration workflows for organizers and registered users.}
+        \resumeItem{Designed relational database schema and optimized SQL queries for better performance and scalability.}
+        \resumeItem{\href{https://github.com/utkarshun/Event-Ticket-Platform}{GitHub Repository}}
+      \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%-------------------- EXPERIENCE --------------------
+\section{Experience}
+\resumeSubHeadingListStart
+
+  \resumeProjectHeading
+      {\textbf{DocuPro (SDE Intern)}}{June 2026 -- Present}
+      \resumeItemListStart
+        \resumeItem{Developing features for a visa document-processing console built on Next.js 15, TypeScript, Prisma, and PostgreSQL, including RBAC-protected dashboard workflows for request intake and processing stages.}
+        \resumeItem{Building the customer-facing document-advisor chatbot: multi-step conversational flows for visa document guidance, eligibility checks, and in-chat document uploads, integrated with WhatsApp messaging and a knowledge base.}
+        \resumeItem{Implementing Zod-validated APIs and React server components with NextAuth OTP authentication, following typed error-handling, testing, and code-review practices.}
+      \resumeItemListEnd
+
+  \resumeProjectHeading
+      {\textbf{Leadics (SWE Intern)}}{March 2026 -- Present}
+      \resumeItemListStart
+        \resumeItem{Contributed to software features in a team environment using Git, code review, and testing practices.}
+        \resumeItem{Collaborated on backend and API work to improve reliability, maintainability, and product quality.}
+      \resumeItemListEnd
+
+  \resumeProjectHeading
+      {\textbf{Placement Volunteer, RNS Institute of Technology}}{2024--2025}
+      \resumeItemListStart
+        \resumeItem{Coordinated campus placements and guided students in coding preparation and interview readiness.}
+      \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%-------------------- EDUCATION --------------------
+\section{Education}
+\resumeSubHeadingListStart
+  \resumeSubheading
+    {Bachelor of Engineering in Computer Science and Engineering (Cybersecurity)}{}
+    {RNS Institute of Technology, Bangalore \quad CGPA: 8.8 / 10}{2022 -- 2026}
+\resumeSubHeadingListEnd
+
+%-------------------- CERTIFICATIONS --------------------
+\section{Certifications}
+\begin{itemize}[leftmargin=0.25in]
+    \small
+    \item AWS Cloud Security --- FutureSkills Prime (NASSCOM, Government of India)
+    \item Cisco Networking Academy --- Introduction to Cybersecurity
+\end{itemize}
+
+%-------------------- ACHIEVEMENTS --------------------
+\section{Achievements}
+\begin{itemize}[leftmargin=0.25in]
+    \small
+    \item Secured \textbf{1st Rank} at Project Open House Panorama (PROP) for GPS Spoofing Project
+    \item Solved 200+ Data Structures and Algorithms problems on LeetCode
+\end{itemize}
+
+\end{document}
