@@ -44,10 +44,11 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleNavClick = (href: string) => {
+  // Native anchor navigation + CSS scroll-smooth/scroll-padding handles the
+  // scrolling reliably; JS-driven scrollIntoView raced the menu-close
+  // animation on mobile and was sometimes cancelled by the browser.
+  const handleNavClick = () => {
     setIsOpen(false);
-    const el = document.querySelector(href);
-    el?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -64,7 +65,7 @@ export default function Navbar() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         <motion.a
           href="#home"
-          onClick={(e) => { e.preventDefault(); handleNavClick("#home"); }}
+          onClick={handleNavClick}
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.97 }}
           className="flex items-center gap-2.5"
@@ -85,7 +86,7 @@ export default function Navbar() {
               <motion.a
                 key={link.href}
                 href={link.href}
-                onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
+                onClick={handleNavClick}
                 onHoverStart={() => setHoveredLink(link.href)}
                 onHoverEnd={() => setHoveredLink(null)}
                 className="relative rounded-lg px-3 py-2 text-sm font-medium"
@@ -116,7 +117,7 @@ export default function Navbar() {
           })}
           <motion.a
             href="#contact"
-            onClick={(e) => { e.preventDefault(); handleNavClick("#contact"); }}
+            onClick={handleNavClick}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
             className="btn-primary ml-3 !px-4 !py-2 text-sm"
@@ -188,7 +189,7 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   variants={{ open: { opacity: 1, x: 0 }, closed: { opacity: 0, x: -16 } }}
-                  onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
+                  onClick={handleNavClick}
                   className={`rounded-xl px-4 py-3 text-sm font-medium transition-colors ${
                     activeSection === link.href.slice(1)
                       ? "bg-primary/10 text-primary"
@@ -201,7 +202,7 @@ export default function Navbar() {
               <motion.a
                 href="#contact"
                 variants={{ open: { opacity: 1, x: 0 }, closed: { opacity: 0, x: -16 } }}
-                onClick={(e) => { e.preventDefault(); handleNavClick("#contact"); setIsOpen(false); }}
+                onClick={handleNavClick}
                 className="btn-primary mt-2 text-center text-sm"
               >
                 Let&apos;s Collaborate
