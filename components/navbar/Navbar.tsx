@@ -44,11 +44,23 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Native anchor navigation + CSS scroll-smooth/scroll-padding handles the
-  // scrolling reliably; JS-driven scrollIntoView raced the menu-close
-  // animation on mobile and was sometimes cancelled by the browser.
+  // Desktop links use native anchor navigation (CSS scroll-smooth +
+  // scroll-padding). The mobile menu must close BEFORE scrolling starts:
+  // the collapse animation races the smooth scroll and the browser
+  // sometimes cancels it, so we scroll after the animation completes.
   const handleNavClick = () => {
     setIsOpen(false);
+  };
+
+  const handleMobileNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    e.preventDefault();
+    setIsOpen(false);
+    setTimeout(() => {
+      document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+    }, 350);
   };
 
   return (
@@ -147,25 +159,15 @@ export default function Navbar() {
           </motion.button>
         </div>
 
-        {/* Mobile menu button */}
-        <motion.button
-          onClick={() => setIsOpen(!isOpen)}
-          whileTap={{ scale: 0.9 }}
-          className="rounded-lg p-2 text-foreground md:hidden"
+        {/* Mobile menu button — plain button on purpose: framer-motion's tap
+            gesture handling left the button unresponsive after long scrolls */}
+        <button
+          onClick={() => setIsOpen((v) => !v)}
+          className="rounded-lg p-2 text-foreground transition-transform active:scale-90 md:hidden"
           aria-label="Toggle menu"
         >
-          <AnimatePresence mode="wait">
-            {isOpen ? (
-              <motion.div key="close" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.2 }}>
-                <X size={24} />
-              </motion.div>
-            ) : (
-              <motion.div key="menu" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.2 }}>
-                <Menu size={24} />
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </motion.button>
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
       </div>
 
       {/* Mobile nav */}
@@ -189,7 +191,7 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   variants={{ open: { opacity: 1, x: 0 }, closed: { opacity: 0, x: -16 } }}
-                  onClick={handleNavClick}
+                  onClick={(e) => handleMobileNavClick(e, link.href)}
                   className={`rounded-xl px-4 py-3 text-sm font-medium transition-colors ${
                     activeSection === link.href.slice(1)
                       ? "bg-primary/10 text-primary"
@@ -202,7 +204,7 @@ export default function Navbar() {
               <motion.a
                 href="#contact"
                 variants={{ open: { opacity: 1, x: 0 }, closed: { opacity: 0, x: -16 } }}
-                onClick={handleNavClick}
+                onClick={(e) => handleMobileNavClick(e, "#contact")}
                 className="btn-primary mt-2 text-center text-sm"
               >
                 Let&apos;s Collaborate
