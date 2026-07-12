@@ -121,9 +121,9 @@ export default function LeetcodeStats({ stats }: LeetcodeStatsProps) {
                 </div>
                 <div>
                   <p className="font-mono text-lg font-bold text-primary-cyan">
-                    #{stats.ranking.toLocaleString()}
+                    {stats.hardSolved}
                   </p>
-                  <p className="text-muted">Ranking</p>
+                  <p className="text-muted">Hard Solved</p>
                 </div>
               </div>
             </div>

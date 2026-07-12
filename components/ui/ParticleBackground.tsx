@@ -12,7 +12,11 @@ export default function ParticleBackground() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    let animationId: number;
+    // Respect accessibility / battery-saver preference
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    let animationId = 0;
+    let running = false;
     const particles: {
       x: number;
       y: number;
@@ -22,6 +26,8 @@ export default function ParticleBackground() {
       opacity: number;
     }[] = [];
 
+    const isSmallScreen = () => window.innerWidth < 768;
+
     const resize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
@@ -29,7 +35,10 @@ export default function ParticleBackground() {
 
     const initParticles = () => {
       particles.length = 0;
-      const count = Math.min(80, Math.floor((canvas.width * canvas.height) / 15000));
+      // Fewer particles on phones: the connect step below is O(n²) per frame
+      const density = isSmallScreen() ? 32000 : 15000;
+      const cap = isSmallScreen() ? 24 : 80;
+      const count = Math.min(cap, Math.floor((canvas.width * canvas.height) / density));
       for (let i = 0; i < count; i++) {
         particles.push({
           x: Math.random() * canvas.width,
@@ -43,6 +52,7 @@ export default function ParticleBackground() {
     };
 
     const draw = () => {
+      if (!running) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       particles.forEach((p, i) => {
@@ -77,9 +87,26 @@ export default function ParticleBackground() {
       animationId = requestAnimationFrame(draw);
     };
 
+    const start = () => {
+      if (running) return;
+      running = true;
+      draw();
+    };
+
+    const stop = () => {
+      running = false;
+      cancelAnimationFrame(animationId);
+    };
+
     resize();
     initParticles();
-    draw();
+
+    // Only animate while the hero is actually on screen — saves battery once scrolled past
+    const observer = new IntersectionObserver(
+      ([entry]) => (entry.isIntersecting ? start() : stop()),
+      { threshold: 0 }
+    );
+    observer.observe(canvas);
 
     const handleResize = () => {
       resize();
@@ -89,7 +116,8 @@ export default function ParticleBackground() {
     window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);
-      cancelAnimationFrame(animationId);
+      observer.disconnect();
+      stop();
     };
   }, []);
 

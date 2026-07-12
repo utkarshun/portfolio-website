@@ -40,9 +40,9 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://avatars.githubusercontent.com/u/136150513?v=4",
-        width: 400,
-        height: 400,
+        url: "https://utkarshkher.vercel.app/profile.jpg",
+        width: 896,
+        height: 1152,
         alt: "Utkarsh Kher",
       },
     ],
